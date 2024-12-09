@@ -37,11 +37,8 @@ public class LogicsImpl implements Logics {
 		return this.values.get(x).get(y);
 	}
 
-	private boolean  columnsTest(final List<String> column) {
-		return column.stream().allMatch(elem -> elem.equals(AST));
-	}
-	private boolean rowsTest(final List<String> row){
-		return row.stream().allMatch(elem -> elem.equals(AST));
+	private boolean  equalElemsTest(final List<String> list) {
+		return list.stream().allMatch(elem -> elem.equals(AST));
 	}
 
 	private List<String> rowValues(final List<List<String>> values, final int indexRow) {
@@ -56,13 +53,13 @@ public class LogicsImpl implements Logics {
 	public boolean toQuit() {
 		boolean quit = false;
 		for (int i = 0; i < size; i++) {
-			quit = rowsTest(rowValues(values, i));
+			quit = equalElemsTest(rowValues(values, i));
 			if( quit == true) {
 				return quit;
 			}
 		}
 		for (List<String> column : values) {
-			quit = columnsTest(column);
+			quit = equalElemsTest(column);
 			if( quit == true) {
 				return quit;
 			}
