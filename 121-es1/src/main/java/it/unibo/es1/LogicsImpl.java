@@ -43,15 +43,6 @@ public class LogicsImpl implements Logics {
 		return this.values.get(elem);
 	}
 
-	private boolean sameValues() {
-		final int currentValue = this.values.get(0);
-		for (final int elem : this.values) {
-			if(currentValue != elem) {
-				return false;
-			}
-		}
-		return true;
-	}
 	@Override
 	public String result() {
 		String result = "";
@@ -65,9 +56,6 @@ public class LogicsImpl implements Logics {
 
 	@Override
 	public boolean toQuit() {
-		if (sameValues()) {
-			return true;
-		}
-		return false;
+		return this.values.stream().allMatch(elem -> elem.equals(values.get(0)));
 	}
 }
