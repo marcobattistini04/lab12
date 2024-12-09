@@ -57,13 +57,11 @@ public class LogicsImpl implements Logics {
 	private Set<Pair<Integer, Integer>> neighbours(
 		final Pair<Integer, Integer> elem, 
 		final List<Pair<Integer, Integer>> actualEntries ) {
-		Set<Pair<Integer, Integer>> neighbours = new HashSet<Pair<Integer,Integer>>();
+		Set<Pair<Integer, Integer>> neighbours = new HashSet<>();
 		for(Direction dir : Direction.values()) {
-			Pair<Integer, Integer> neighbour = dir.move(elem);
-			if (isConsistent(neighbour)) {
-				if(! actualEntries.contains(neighbour)) {
-					neighbours.add(neighbour);
-				}
+			var neigh = dir.move(elem);
+			if (isConsistent(neigh) && !actualEntries.contains(neigh)) {
+					neighbours.add(neigh);
 			}
 		}
 		return neighbours;
@@ -89,7 +87,4 @@ public class LogicsImpl implements Logics {
 	public boolean toQuit() {
 		return positions.size() == size * size;
 	}
-
-
-
 }
