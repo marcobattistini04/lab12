@@ -12,12 +12,16 @@ public class LogicsImpl implements Logics {
 		LEFT(0, -1),
 		RIGHT(0, 1),
 		UP(-1, 0),
-		DOWN(1, 0);
+		DOWN(1, 0),
+		UPRIGHT(-1, 1),
+		UPLEFT(-1, -1),
+		DOWNRIGHT(1, 1),
+		DOWNLEFT(1, -1);
 		private final int dx;
 		private final int dy;
-				Direction(int i, int j) {
-					this.dx = i;
-					this.dy = j;
+				Direction(int x, int y) {
+					this.dx = x;
+					this.dy = y;
 				}
 		public Pair<Integer, Integer> move (Pair<Integer, Integer> elem) {
 			return new Pair<Integer,Integer>(elem.getX() + dx, elem.getY() + dy);
